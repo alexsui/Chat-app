@@ -7,17 +7,18 @@
 }
 
 html {
-    font-size: 16px;
+    
+    font-size: 25px;
 }
 
 input {
-    font-size: 14px;
+    font-size: 20px;
 }
 
 body {
     line-height: 1.4;
     color: #333333;
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: 'Noto Sans TC', sans-serif;
 }
 
 h1 {
@@ -39,16 +40,20 @@ input {
 
 button {
     cursor: pointer;
-    padding: 12px;
-    background: #7C5CBF;
+    padding: 9px;
+    background: #07a7f1;
+    border-radius: 10px;
     border: none;
     color: white;
-    font-size: 16px;
+    font-size: 40px;
+    font-weight: 700;
+    font-family: sans-serif;
     transition: background .3s ease;
+    width:20%
 }
 
 button:hover {
-    background: #6b47b8;
+    background:rgb(147, 212, 238)
 }
 
 button:disabled {
@@ -93,8 +98,9 @@ button:disabled {
     height: 100vh;
     color: white;
     background: #333744;
-    width: 225px;
-    overflow-y: scroll
+    width: 350px;
+    overflow-y: scroll;
+
 }
 
 /* Chat styles */
@@ -110,23 +116,38 @@ button:disabled {
     flex-grow: 1;
     padding: 24px 24px 0 24px;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 /* Message Styles */
 
 .message {
     margin-bottom: 16px;   
+    max-width: 40vw;
+    display: inline-block;
+    border-radius: 20px;
+    background-color: rgb(233, 231, 231);
+    padding: 10px;
 }
 
 .message__name {
     font-weight: 600;
-    font-size: 14px;
+    font-size: 18px;
     margin-right: 8px;
+    color:rgb(46, 39, 39)
 }
 
 .message__meta {
     color: #777;
-    font-size: 14px;
+    font-size: 18px;
+    float:right;
+    margin-top:8px
+}
+.message__text{
+    margin:5px 0px
 }
 
 .message a {
@@ -150,6 +171,8 @@ button:disabled {
 
 .compose input {
     border: 1px solid #eeeeee;
+    background-color:rgb(219, 215, 215);
+    border-radius: 20px;
     width: 100%;
     padding: 12px;
     margin: 0 16px 0 0;
@@ -157,20 +180,22 @@ button:disabled {
 }
 
 .compose button {
-    font-size: 14px;
+    font-size: 20px;
 }
 
 /* Chat Sidebar Styles */
 
 .room-title {
-    font-weight: 400;
-    font-size: 22px;
-    background: #2c2f3a;
-    padding: 24px;   
+    font-weight: 700;
+    font-size: 40px;
+    background: #0abbf1;
+    padding: 24px;
+    text-align: center;
+       
 }
 
 .list-title {
-    font-weight: 500;
+    font-weight: 00;
     font-size: 18px;
     margin-bottom: 4px;
     padding: 12px 24px 0 24px;
@@ -180,4 +205,12 @@ button:disabled {
     list-style-type: none;
     font-weight: 300;
     padding: 12px 24px 0 24px;
+}
+#listOfRoom{
+    margin-bottom: 10px;
+}
+.myMessage{
+    background-color:   #28b3f3;
+    color:white;
+    align-self: flex-end;
 }

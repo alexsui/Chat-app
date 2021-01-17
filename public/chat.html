@@ -4,8 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat room</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="/img/favicon.png">
-    <link rel="stylesheet" href="/css/styles.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 <body>
     <div class="chat">
@@ -15,7 +17,7 @@
             <div class="compose">
                 <form  id="message-form">
                     <input name="message" type="text" required autocomplete="off">
-                    <button >send</button>
+                    <button >Send</button>
                 </form>
                 <button id="send-location">Send location</button>
             </div>
@@ -25,11 +27,20 @@
     
     <script id="message-template"type="text/html">
         <div class="message">
-            <p>
+            <p dir="ltr">
                 <span class="message__name">{{username}}</span>
                 <span class="message__meta">{{createdAt}}</span>
             </p>
             <p>{{message}}</p>
+        </div>
+    </script>
+    <script id="myMessage-template" type="text/html">
+        <div class="myMessage message">
+            <p dir="ltr">
+                <span class="message__name">{{username}}</span>
+                <span class="message__meta">{{createdAt}}</span>
+            </p>
+            <p class="message__text">{{message}}</p>
         </div>
     </script>
 

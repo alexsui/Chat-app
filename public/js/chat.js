@@ -7,6 +7,7 @@ const $sendLocationButton=document.querySelector("#send-location");
 const $messages=document.querySelector("#messages");
 //template
 const $messageTemplate=document.querySelector('#message-template').innerHTML;
+const $myMessageTemplate=document.querySelector('#myMessage-template').innerHTML;
 const $locationMessageTemplate=document.querySelector('#location-message-template').innerHTML;
 const $sidebarTemplate=document.querySelector('#sidebar-template').innerHTML;
 //options
@@ -47,6 +48,18 @@ socket.on('message',(message)=>{
     $messages.insertAdjacentHTML("beforeend",html);
     autoscroll();
 })
+socket.on('myMessage',(message)=>{
+   
+    const html=Mustache.render($myMessageTemplate,
+        {
+            username:message.username,
+            message:message.text,
+            createdAt:moment(message.createdAt).format("h:mm a")
+        }
+    );
+    $messages.insertAdjacentHTML("beforeend",html);
+    autoscroll();
+})
 socket.on('locationMessage',(message)=>{
     console.log(message)
     const html=Mustache.render($locationMessageTemplate,
@@ -61,8 +74,7 @@ socket.on('locationMessage',(message)=>{
 socket.emit('join',({username,room}),(error)=>{
     if(error){
         return alert(error)
-    }
-    
+    } 
 })
 socket.on('roomdata',({room,users})=>{
    const html=Mustache.render($sidebarTemplate,{room,users});
