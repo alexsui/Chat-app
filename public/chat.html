@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chat room</title>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
     <link rel="icon" href="/img/favicon.png">
@@ -19,7 +20,8 @@
                     <input name="message" type="text" required autocomplete="off">
                     <button >Send</button>
                 </form>
-                <button id="send-location">Send location</button>
+                <button id="send-location">Share <i class="fas fa-street-view"></i> </button>
+               
             </div>
            
         </div>
@@ -50,7 +52,16 @@
                 <span class="message__name">{{username}}</span>
                 <span class="message__meta">{{createdAt}}</span>
             </p>
-           <p> <a href="{{url}}"target="_blank">My current location</a></p>
+           <p> <a  href="{{url}}"target="_blank">My current location</a></p>
+        </div>
+    </script>
+    <script id="myLocation-message-template" type="text/html">
+        <div class="message myMessage">
+            <p>
+                <span class="message__name">{{username}}</span>
+                <span class="message__meta">{{createdAt}}</span>
+            </p>
+           <p> <a class="message__location" href="{{url}}"target="_blank">My current location</a></p>
         </div>
     </script>
     <script id="sidebar-template" type="text/html">

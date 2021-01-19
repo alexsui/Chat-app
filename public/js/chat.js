@@ -10,6 +10,7 @@ const $messageTemplate=document.querySelector('#message-template').innerHTML;
 const $myMessageTemplate=document.querySelector('#myMessage-template').innerHTML;
 const $locationMessageTemplate=document.querySelector('#location-message-template').innerHTML;
 const $sidebarTemplate=document.querySelector('#sidebar-template').innerHTML;
+const $myLocationMessageTemplate=document.querySelector("#myLocation-message-template").innerHTML;
 //options
 const {username,room}=Qs.parse(location.search,{ignoreQueryPrefix:true});
 
@@ -63,6 +64,17 @@ socket.on('myMessage',(message)=>{
 socket.on('locationMessage',(message)=>{
     console.log(message)
     const html=Mustache.render($locationMessageTemplate,
+        {
+            username:message.username,
+            url:message.url,
+            createdAt:moment(message.createdAt).format("h:mm a")
+        })
+   $messages.insertAdjacentHTML("beforeend",html);
+   autoscroll();
+})
+socket.on('myLocationMessage',(message)=>{
+    console.log(message)
+    const html=Mustache.render($myLocationMessageTemplate,
         {
             username:message.username,
             url:message.url,

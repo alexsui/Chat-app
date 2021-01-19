@@ -35,8 +35,8 @@ io.on("connection",(socket)=>{
       return callback(error)
     }
     socket.join(user.room)
-    socket.emit('message',generateMessage("Admin","Welcome!"));
-    socket.broadcast.to(user.room).emit('message',generateMessage( 'Admin',`${user.username} has joined!`));
+    socket.emit('message',generateMessage("Room","Welcome!"));
+    socket.broadcast.to(user.room).emit('message',generateMessage( 'Room',`${user.username} has joined!`));
     io.to(user.room).emit('roomdata',{
       room:user.room,
       users:getUserInRoom(user.room)
@@ -56,14 +56,15 @@ io.on("connection",(socket)=>{
   })
   socket.on('sendLocation',(location,callback)=>{
     const user=getUser(socket.id)
-    io.to(user.room).emit('locationMessage',generateLocationMessage(user.username,`https://google.com/maps?q=${location.latitude},${location.longitude}`));
+    socket.broadcast.to(user.room).emit('locationMessage',generateLocationMessage(user.username,`https://google.com/maps?q=${location.latitude},${location.longitude}`));
+    socket.emit('myLocationMessage',generateLocationMessage("me",`https://google.com/maps?q=${location.latitude},${location.longitude}`));
     callback();
   })
   
   socket.on('disconnect',()=>{
     const user=removeUser(socket.id)
     if(user){
-      io.to(user.room).emit('message',generateMessage( "Admin",`${user.username} has left!`));
+      io.to(user.room).emit('message',generateMessage( "Room",`${user.username} has left!`));
     
       io.to(user.room).emit('roomdata',{
         room:user.room,

@@ -23,13 +23,14 @@ body {
 
 h1 {
     margin-bottom: 16px;
+    text-align: center;
 }
 
 label {
     display: block;
     font-size: 14px;
     margin-bottom: 8px;
-    color: #777;
+    color: rgb(34, 191, 253);
 }
 
 input {
@@ -74,17 +75,21 @@ button:disabled {
 
 .centered-form__box {
     box-shadow: 0px 0px 17px 1px #1D1F26;
-    background: #F7F7FA;
+    background: #ffffff;
     padding: 24px;
     width: 250px;
 }
 
 .centered-form button {
-    width: 100%;
+    width: 50%;
+   float: right;
+   font-size: 25px;
 }
 
 .centered-form input {
     margin-bottom: 16px;
+    background-color: rgb(226, 220, 220);
+    border-radius: 15px;
     width: 100%;
 }
 
@@ -148,6 +153,9 @@ button:disabled {
 }
 .message__text{
     margin:5px 0px
+}
+.message a.message__location{
+    color: white;
 }
 
 .message a {
